@@ -94,17 +94,35 @@ const Table = () => {
 
     const options = {
         filterType: "textField",
+        responsive: "vertical",
+
+        fixedSelectColumn: false,
+        draggableColumns: {
+            enabled: true,
+        },
+        search: true,
+        filter: true,
+        download: false,
+        print: false,
+        rowsPerPage: 5,
+        rowsPerPageOptions: [5, 10, 20, 50],
+        textLabels: {
+            body: {
+                noMatch: "Loading...",
+                toolTip: "Sort",
+            },
+        }
     };
 
     useEffect(() => {
         TestingsServices().then(res => {
-            console.log(res.data)
             setState(res.data)
         })
     }, [])
 
     return (
         <div className="Components">
+            <FilterTable setState={setState}/>
             <MUIDataTable
                 title={"Testing Table"}
                 data={state}

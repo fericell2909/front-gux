@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 
@@ -9,10 +8,17 @@ export const TestingsServices = () => {
 };
 
 
-export const FilterTestingsServices = () => {
+export const FilterTestingsServices = (numero_rol, nombre_paciente, codigo_prevision, fecha_alta_desde, fecha_alta_hasta) => {
     return axios.get(
-        `http://localhost:8000/api/testings/?numero_rol__contains=&numero_rol=&nombre_paciente__contains=&nombre_paciente=&fecha_hospitalizacion__contains=&fecha_hospitalizacion=&fecha_alta__contains=&fecha_alta=&codigo_prevision__contains=&codigo_prevision=`,
+        `http://localhost:8000/api/testings/?numero_rol__contains=${numero_rol}&nombre_paciente__contains=${nombre_paciente}&codigo_prevision__contains=${codigo_prevision}&fecha_alta__gte=${fecha_alta_desde}&fecha_alta__lte=${fecha_alta_hasta}`,
     )
 };
+
+export const AllPrevesionApi = () => {
+    return axios.get(
+        `http://localhost:8000/api/testings/all_pevesion/`,
+    )
+};
+
 
 
