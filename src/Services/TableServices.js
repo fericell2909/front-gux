@@ -27,5 +27,12 @@ export const postTestingsServices = (data) => {
     )
 };
 
+export const deleteTestingsServices = (id) => {
+    return axios.delete(
+        `http://localhost:8000/api/testings/${id}`,
+    )
+};
+
+
 
 

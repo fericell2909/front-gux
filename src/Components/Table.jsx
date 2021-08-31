@@ -3,9 +3,27 @@ import MUIDataTable from "mui-datatables";
 import { TestingsServices } from "../Services/TableServices"
 import FilterTable from "./FilterTable"
 import Add from "./Add"
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import {deleteTestingsServices} from '../Services/TableServices'
+import Edit from './Edit'
+
 
 const Table = () => {
     const [state, setState] = useState([])
+    const DeleteRow = (id) => {
+        deleteTestingsServices(id).then(res => {
+            TestingsServices().then(res => {
+                setState(res.data)
+            })
+
+        })
+    }
+    
+    const EditRow =  () => {
+        return (<Edit></Edit>)
+    }
 
     const columns = [
         {
@@ -89,6 +107,29 @@ const Table = () => {
                 sort: true,
             }
         },
+        {
+            name: "id", label: "action", options: {
+                customBodyRender: (value) => {
+                    return (
+                        <div>
+                         <IconButton  aria-label="delete" >
+                            <EditIcon onClick={() => { 
+                                console.log("EditIcon") 
+                                return(<EditRow/>)
+                                }} />
+                            
+                        </IconButton>
+                        <IconButton  aria-label="delete" >                            
+                            <DeleteIcon onClick={() => { DeleteRow(value) }} />
+                        </IconButton>
+
+                        </div>
+                       
+                        )
+                },
+            }
+        }
+
 
 
     ];
@@ -131,9 +172,7 @@ const Table = () => {
                 columns={columns}
                 options={options}
             />
-
         </div>
-
     )
 }
 
