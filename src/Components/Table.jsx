@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MUIDataTable from "mui-datatables";
 import { TestingsServices } from "../Services/TableServices"
 import FilterTable from "./FilterTable"
+import Add from "./Add"
 
 const Table = () => {
     const [state, setState] = useState([])
@@ -122,9 +123,10 @@ const Table = () => {
 
     return (
         <div className="Components">
+            <Add setState={setState}/>
             <FilterTable setState={setState}/>
             <MUIDataTable
-                title={"Testing Table"}
+                title={"Tabla de prueba"}
                 data={state}
                 columns={columns}
                 options={options}

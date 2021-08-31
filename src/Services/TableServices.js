@@ -20,5 +20,12 @@ export const AllPrevesionApi = () => {
     )
 };
 
+export const postTestingsServices = (data) => {
+    return axios.post(
+        `http://localhost:8000/api/testings/`,
+        data,
+    )
+};
+
 
 
