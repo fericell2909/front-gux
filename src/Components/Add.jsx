@@ -9,7 +9,6 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
@@ -19,10 +18,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 const Add = (props) => {
     const classes = useStyles();
-
     const [Add, setAdd] = useState({
         numero_rol: "",
         nombre_paciente: "",
@@ -59,7 +56,6 @@ const Add = (props) => {
     }
 
     return (<div>
-
         <Accordion>
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
