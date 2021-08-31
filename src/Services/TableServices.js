@@ -34,5 +34,16 @@ export const deleteTestingsServices = (id) => {
 };
 
 
+export const TestingsServicesId = (id) => {
+    return axios.get(
+        `http://localhost:8000/api/testings/${id}/`,
+    )
+};
 
+export const putTestingsServices = (data, id) => {
+    return axios.put(
+        `http://localhost:8000/api/testings/${id}/`,
+        data,
+    )
+};
 
