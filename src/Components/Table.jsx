@@ -6,7 +6,7 @@ import Add from "./Add"
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import {deleteTestingsServices} from '../Services/TableServices'
+import { deleteTestingsServices } from '../Services/TableServices'
 import Edit from './Edit'
 
 //import Button from '@material-ui/core/Button';
@@ -18,8 +18,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
-  });
-  
+});
+
 
 
 const Table = () => {
@@ -35,22 +35,22 @@ const Table = () => {
 
         })
     }
-    
+
     const handleClickOpen = () => {
         setOpen(true);
-      };
-    
-      const handleClose = () => {
+    };
+
+    const handleClose = () => {
         setOpen(false);
-      };
+    };
 
     const EditRow = (value) => {
         handleClickOpen(value)
         console.log(value)
         setID(value)
     }
-    
-    
+
+
     const columns = [
         {
             name: "id",
@@ -138,18 +138,18 @@ const Table = () => {
                 customBodyRender: (value) => {
                     return (
                         <div>
-                         <IconButton  aria-label="Edit" >
-                            <EditIcon onClick={() => {EditRow(value)}}/>
-                            
-                            
-                        </IconButton>
-                        <IconButton  aria-label="delete" >                            
-                            <DeleteIcon onClick={() => { DeleteRow(value) }} />
-                        </IconButton>
+                            <IconButton aria-label="Edit" >
+                                <EditIcon onClick={() => { EditRow(value) }} />
+
+
+                            </IconButton>
+                            <IconButton aria-label="delete" >
+                                <DeleteIcon onClick={() => { DeleteRow(value) }} />
+                            </IconButton>
 
                         </div>
-                       
-                        )
+
+                    )
                 },
             }
         }
@@ -188,32 +188,30 @@ const Table = () => {
 
     return (
         <div className="Components">
-            <Add setState={setState}/>
-            <FilterTable setState={setState}/>
+            <Add setState={setState} />
+            <FilterTable setState={setState} />
             <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle id="alert-dialog-slide-title">{"Editar Registro"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-          <Edit idRow={idRow} handleClose={handleClose} setState={setState}/>
-          </DialogContentText>
-        </DialogContent>
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-slide-title"
+                aria-describedby="alert-dialog-slide-description"
+            >
+                <DialogTitle id="alert-dialog-slide-title">{"Editar Registro"}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-slide-description">
+                        <Edit idRow={idRow} handleClose={handleClose} setState={setState} />
+                    </DialogContentText>
+                </DialogContent>
 
-      </Dialog>
-            <div className="Table">
+            </Dialog>
             <MUIDataTable
                 title={"Tabla de prueba"}
                 data={state}
                 columns={columns}
                 options={options}
             />
-            </div>
         </div>
     )
 }
